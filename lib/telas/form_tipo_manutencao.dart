@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/dto/dto_tipo_manutencao.dart';
+import 'package:flutter_application_1/dto/dto_tipo_manutencao.dart';
 
 class FormTipoManutencao extends StatefulWidget {
   const FormTipoManutencao({Key? key}) : super(key: key);
@@ -15,6 +17,9 @@ class _FormTipoManutencaoState extends State<FormTipoManutencao> {
   String nome = '';
   String descricao = '';
   bool ativo = true;
+
+  // DTO para armazenar o resultado
+  TipoManutencaoDto? tipoManutencaoDto;
 
   @override
   Widget build(BuildContext context) {
@@ -86,12 +91,20 @@ class _FormTipoManutencaoState extends State<FormTipoManutencao> {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
 
-      // Simulação de salvar
-      debugPrint('Tipo de Manutenção salvo:');
-      debugPrint('ID: $id');
-      debugPrint('Nome: $nome');
-      debugPrint('Descrição: $descricao');
-      debugPrint('Ativo: $ativo');
+      // Instanciar o DTO
+      tipoManutencaoDto = TipoManutencaoDto(
+        id: id,
+        nome: nome,
+        descricao: descricao,
+        ativo: ativo,
+      );
+
+      // Exemplo: você agora tem o DTO pronto para usar
+      debugPrint('TipoManutencaoDto gerado:');
+      debugPrint(tipoManutencaoDto!.toJson().toString());
+
+      // Exemplo: poderia chamar service
+      // await TipoManutencaoService.salvar(tipoManutencaoDto!);
 
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Tipo de Manutenção salvo com sucesso!')),

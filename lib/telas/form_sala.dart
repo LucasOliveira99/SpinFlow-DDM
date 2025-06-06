@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/dto/dto_sala.dart';
+import 'package:flutter_application_1/dto/dto_sala.dart'; 
 
 class FormSala extends StatefulWidget {
   const FormSala({Key? key}) : super(key: key);
@@ -17,6 +19,9 @@ class _FormSalaState extends State<FormSala> {
   int numeroFilas = 0;
   int numeroBikesPorFila = 0;
   bool ativo = true;
+
+  // DTO para armazenar o resultado
+  SalaDto? salaDto;
 
   @override
   Widget build(BuildContext context) {
@@ -143,14 +148,22 @@ class _FormSalaState extends State<FormSala> {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
 
-      // Simulação: salvar
-      debugPrint('Sala salva:');
-      debugPrint('ID: $id');
-      debugPrint('Nome: $nome');
-      debugPrint('Capacidade Total de Bikes: $capacidadeTotalBikes');
-      debugPrint('Número de Filas: $numeroFilas');
-      debugPrint('Número de Bikes por Fila: $numeroBikesPorFila');
-      debugPrint('Ativo: $ativo');
+      // Instanciar o DTO
+      salaDto = SalaDto(
+        id: id,
+        nome: nome,
+        capacidadeTotalBikes: capacidadeTotalBikes,
+        numeroFilas: numeroFilas,
+        numeroBikesPorFila: numeroBikesPorFila,
+        ativo: ativo,
+      );
+
+      // Exemplo: você agora tem o DTO pronto para usar
+      debugPrint('SalaDto gerado:');
+      debugPrint(salaDto!.toJson().toString());
+
+      // Exemplo: poderia chamar service
+      // await SalaService.salvar(salaDto!);
 
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Sala salva com sucesso!')),

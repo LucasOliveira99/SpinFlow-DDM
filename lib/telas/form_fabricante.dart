@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/dto/dto_fabricante.dart';
 import 'package:flutter_multi_formatter/flutter_multi_formatter.dart';
-import 'package:flutter_application_1/dto/dto_fabricante.dart'; // ajuste para seu path real
+import 'package:flutter_application_1/dto/dto_fabricante.dart'; 
 
 class FormFabricante extends StatefulWidget {
   const FormFabricante({Key? key}) : super(key: key);
