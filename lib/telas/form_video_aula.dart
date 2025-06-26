@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/dto/dto_video_aula.dart';
-import 'package:flutter_application_1/dto/dto_video_aula.dart';
+import 'package:flutter_application_1/dao/dao_video_aula.dart';
 
 class FormVideoAula extends StatefulWidget {
   const FormVideoAula({Key? key}) : super(key: key);
@@ -20,6 +20,7 @@ class _FormVideoAulaState extends State<FormVideoAula> {
 
   // DTO para armazenar o resultado
   VideoAulaDto? videoAulaDto;
+  final DaoVideoAula _dao = DaoVideoAula();
 
   @override
   Widget build(BuildContext context) {
@@ -112,12 +113,7 @@ class _FormVideoAulaState extends State<FormVideoAula> {
         ativo: ativo,
       );
 
-      // Exemplo: DTO pronto para uso
-      debugPrint('VideoAulaDto gerado:');
-      debugPrint(videoAulaDto!.toJson().toString());
-
-      // Exemplo: poderia chamar um service aqui
-      // await VideoAulaService.salvar(videoAulaDto!);
+        _dao.inserir(videoAulaDto!);
 
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Vídeo Aula salva com sucesso!')),
