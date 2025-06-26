@@ -5,8 +5,11 @@ import 'package:flutter_application_1/telas/form_sala.dart';
 import 'package:flutter_application_1/telas/form_tipo_manutencao.dart';
 import 'package:flutter_application_1/telas/form_video_aula.dart';
 import 'package:flutter_application_1/telas/tela_dashboard.dart';
+import 'package:flutter_application_1/dao/database_connection.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await DatabaseConnection().database;
   runApp(const MyApp());
 }
 
